@@ -6,7 +6,7 @@
 #include<sys/socket.h>
 #include<netinet/in.h>
 #include<netdb.h>
-int run_client(int argc, char **argv){//main
+int main(int argc, char **argv){//main
   if(argc<2)
   {
     printf("<host> <puerto>\n");
