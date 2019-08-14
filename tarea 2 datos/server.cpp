@@ -6,7 +6,7 @@
 #include<arpa/inet.h>
 #include<netinet/in.h>
 #include<netdb.h>
-int run_Server(int argc, char **argv){//main
+int main(int argc, char **argv){//main
   if(argc<2)
   { //Especifica los argumentos
     printf("%s <puerto>\n",argv[0]);
