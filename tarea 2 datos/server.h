@@ -1,4 +1,5 @@
 
+
 #ifndef SERVER_H
 #define SERVER_H
 #include<stdio.h>
@@ -10,6 +11,6 @@
 #include<netinet/in.h>
 #include<netdb.h>
 
-int run_server(int argc, char **argv)
+int run_server();
 
 #endif

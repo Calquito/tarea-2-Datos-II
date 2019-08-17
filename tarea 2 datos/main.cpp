@@ -1,11 +1,9 @@
-#include "linkedlist.h"
+
 #include "server.h"
-#include "client.h"
+#include <iostream>
 
-//ejecutar con g++ linkedlist.cpp main.cpp -o main && ./main
-int main(int argc, char **argv){
-    return 0; 
-
-
+int main (int argc, char **argv){
+    run_server();
+    return 0;
 }
 

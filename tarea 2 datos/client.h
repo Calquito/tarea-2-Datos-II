@@ -9,6 +9,6 @@
 #include<netinet/in.h>
 #include<netdb.h>
 
-int run_client(int argc, char **argv)
+int run_client(char* direccion_ip, char* numero_de_puerto);
 
 #endif

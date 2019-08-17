@@ -1,3 +1,4 @@
+
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
@@ -6,17 +7,18 @@
 #include<arpa/inet.h>
 #include<netinet/in.h>
 #include<netdb.h>
-int main(int argc, char **argv){//main
-  if(argc<2)
+//int main (int argc, char **argv){//main
+static int run_server(){//int run_server(char* numero_de_puerto){
+  /*if(argc<2)
   { //Especifica los argumentos
     printf("%s <puerto>\n",argv[0]);
     return 1;
-  }
+  }*/
   int conexion_servidor, conexion_cliente, puerto; //declaramos las variables
   socklen_t longc; //Debemos declarar una variable que contendrá la longitud de la estructura
   struct sockaddr_in servidor, cliente;
-  char buffer[100]; //Declaramos una variable que contendrá los mensajes que recibamos
-  puerto = atoi(argv[1]);
+  char buffer[100]; //Declaramos una  que contendrá los mensajes que recibamos
+  puerto = 8080;// atoi(numero_de_puerto);
   conexion_servidor = socket(AF_INET, SOCK_STREAM, 0); //creamos el socket
   bzero((char *)&servidor, sizeof(servidor)); //llenamos la estructura de 0's
   servidor.sin_family = AF_INET; //asignamos a la estructura
