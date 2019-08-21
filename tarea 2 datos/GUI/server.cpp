@@ -30,19 +30,20 @@ int run_server(const char* numero_de_puerto){
     close(conexion_servidor);
     return 1;
   }
-  listen(conexion_servidor, 3); //Estamos a la escucha
-  printf("A la escucha en el puerto %d\n", ntohs(servidor.sin_port));
-  longc = sizeof(cliente); //Asignamos el tamaño de la estructura a esta variable
-  conexion_cliente = accept(conexion_servidor, (struct sockaddr *)&cliente, &longc); //Esperamos una conexion
-  if(conexion_cliente<0)
+  while (true)
   {
-    printf("Error al aceptar trafico\n");
-    close(conexion_servidor);
-    return 1;
-  }
-  
-  printf("Conectando con %s:%d\n", inet_ntoa(cliente.sin_addr),htons(cliente.sin_port));
-  while(true){
+    listen(conexion_servidor, 3); //Estamos a la escucha
+    printf("A la escucha en el puerto %d\n", ntohs(servidor.sin_port));
+    longc = sizeof(cliente); //Asignamos el tamaño de la estructura a esta variable
+    conexion_cliente = accept(conexion_servidor, (struct sockaddr *)&cliente, &longc); //Esperamos una conexion
+    if(conexion_cliente<0)
+    {
+      printf("Error al aceptar trafico\n");
+      close(conexion_servidor);
+      return 1;
+    }
+    
+    printf("Conectando con %s:%d\n", inet_ntoa(cliente.sin_addr),htons(cliente.sin_port));
     if(recv(conexion_cliente, buffer, 100, 0) < 0)
     { //Comenzamos a recibir datos del cliente
       //Si recv() recibe 0 el cliente ha cerrado la conexion. Si es menor que 0 ha habido algún error.
@@ -56,11 +57,12 @@ int run_server(const char* numero_de_puerto){
       bzero((char *)&buffer, sizeof(buffer));
       send(conexion_cliente, "Recibido\n", 13, 0);
     }
+    //close(conexion_servidor);
   }
-  close(conexion_servidor);
   return 0;
 }
 
 int main (int argc, char **argv){//main
-  return run_server("8080");
+  run_server("8080");
+  return 0;
 }
