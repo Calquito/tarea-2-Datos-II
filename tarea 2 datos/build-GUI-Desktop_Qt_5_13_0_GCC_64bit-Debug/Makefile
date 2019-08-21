@@ -52,11 +52,13 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../GUI/ll_window.cpp \
+SOURCES       = ../GUI/client.cpp \
+		../GUI/ll_window.cpp \
 		../GUI/main.cpp \
 		../GUI/mainwindow.cpp moc_ll_window.cpp \
 		moc_mainwindow.cpp
-OBJECTS       = ll_window.o \
+OBJECTS       = client.o \
+		ll_window.o \
 		main.o \
 		mainwindow.o \
 		moc_ll_window.o \
@@ -237,6 +239,7 @@ DIST          = ../../../../Qt/5.13.0/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.13.0/gcc_64/mkspecs/features/qt_config.prf \
 		../../../../Qt/5.13.0/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../../../Qt/5.13.0/gcc_64/mkspecs/features/spec_post.prf \
+		../GUI/.qmake.stash \
 		../../../../Qt/5.13.0/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt/5.13.0/gcc_64/mkspecs/features/toolchain.prf \
 		../../../../Qt/5.13.0/gcc_64/mkspecs/features/default_pre.prf \
@@ -256,8 +259,10 @@ DIST          = ../../../../Qt/5.13.0/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.13.0/gcc_64/mkspecs/features/exceptions.prf \
 		../../../../Qt/5.13.0/gcc_64/mkspecs/features/yacc.prf \
 		../../../../Qt/5.13.0/gcc_64/mkspecs/features/lex.prf \
-		../GUI/GUI.pro ../GUI/ll_window.h \
-		../GUI/mainwindow.h ../GUI/ll_window.cpp \
+		../GUI/GUI.pro ../GUI/client.h \
+		../GUI/ll_window.h \
+		../GUI/mainwindow.h ../GUI/client.cpp \
+		../GUI/ll_window.cpp \
 		../GUI/main.cpp \
 		../GUI/mainwindow.cpp
 QMAKE_TARGET  = GUI
@@ -447,6 +452,7 @@ Makefile: ../GUI/GUI.pro ../../../../Qt/5.13.0/gcc_64/mkspecs/linux-g++/qmake.co
 		../../../../Qt/5.13.0/gcc_64/mkspecs/features/qt_config.prf \
 		../../../../Qt/5.13.0/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../../../Qt/5.13.0/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../../Qt/5.13.0/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt/5.13.0/gcc_64/mkspecs/features/toolchain.prf \
 		../../../../Qt/5.13.0/gcc_64/mkspecs/features/default_pre.prf \
@@ -644,6 +650,7 @@ Makefile: ../GUI/GUI.pro ../../../../Qt/5.13.0/gcc_64/mkspecs/linux-g++/qmake.co
 ../../../../Qt/5.13.0/gcc_64/mkspecs/features/qt_config.prf:
 ../../../../Qt/5.13.0/gcc_64/mkspecs/linux-g++/qmake.conf:
 ../../../../Qt/5.13.0/gcc_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../../Qt/5.13.0/gcc_64/mkspecs/features/exclusive_builds.prf:
 ../../../../Qt/5.13.0/gcc_64/mkspecs/features/toolchain.prf:
 ../../../../Qt/5.13.0/gcc_64/mkspecs/features/default_pre.prf:
@@ -679,8 +686,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt/5.13.0/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../GUI/ll_window.h ../GUI/mainwindow.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../GUI/ll_window.cpp ../GUI/main.cpp ../GUI/mainwindow.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../GUI/client.h ../GUI/ll_window.h ../GUI/mainwindow.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../GUI/client.cpp ../GUI/ll_window.cpp ../GUI/main.cpp ../GUI/mainwindow.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../GUI/ll_window.ui ../GUI/mainwindow.ui $(DISTDIR)/
 
 
@@ -964,6 +971,9 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 ####### Compile
 
+client.o: ../GUI/client.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o client.o ../GUI/client.cpp
+
 ll_window.o: ../GUI/ll_window.cpp ../GUI/ll_window.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/QDialog \
 		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qdialog.h \
@@ -1069,7 +1079,29 @@ ll_window.o: ../GUI/ll_window.cpp ../GUI/ll_window.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtGui/qtouchdevice.h \
-		ui_ll_window.h
+		ui_ll_window.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/QVariant \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/QApplication \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qapplication.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtGui/qguiapplication.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtGui/qinputmethod.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qframe.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/QLineEdit \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qlineedit.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtGui/qtextcursor.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtGui/qtextformat.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtGui/qpen.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtGui/qtextoption.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/QPushButton \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtGui/qicon.h \
+		../GUI/client.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ll_window.o ../GUI/ll_window.cpp
 
 main.o: ../GUI/main.cpp ../GUI/mainwindow.h \
@@ -1301,7 +1333,28 @@ mainwindow.o: ../GUI/mainwindow.cpp ../GUI/mainwindow.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qmainwindow.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtGui/qicon.h \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/QVariant \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/QApplication \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qapplication.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtGui/qguiapplication.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtGui/qinputmethod.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/QMenuBar \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qmenubar.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qmenu.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qaction.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qactiongroup.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/QPushButton \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/QStatusBar \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qstatusbar.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/QToolBar \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qtoolbar.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../GUI/mainwindow.cpp
 
 moc_ll_window.o: moc_ll_window.cpp 
