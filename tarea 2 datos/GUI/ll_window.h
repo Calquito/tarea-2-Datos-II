@@ -15,6 +15,9 @@ public:
     explicit Ll_window(QWidget *parent = nullptr);
     ~Ll_window();
 
+private slots:
+    void on_pushButton_clicked();
+
 private:
     Ui::Ll_window *ui;
 };

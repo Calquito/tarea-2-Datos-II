@@ -25,13 +25,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        client.cpp \
         ll_window.cpp \
         main.cpp \
         mainwindow.cpp
 
 HEADERS += \
+    client.h \
         ll_window.h \
-        mainwindow.h
+        mainwindow.h \
 
 FORMS += \
         ll_window.ui \

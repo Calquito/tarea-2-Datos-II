@@ -18,13 +18,26 @@
     <property name="geometry">
      <rect>
       <x>140</x>
-      <y>20</y>
+      <y>30</y>
       <width>89</width>
       <height>25</height>
      </rect>
     </property>
     <property name="text">
      <string>Linked list</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>130</y>
+      <width>89</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Binary tree</string>
     </property>
    </widget>
   </widget>
