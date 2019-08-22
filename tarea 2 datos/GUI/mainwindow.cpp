@@ -19,3 +19,11 @@ void MainWindow::on_pushButton_clicked()
 
     l_window->show();
 }
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    b_window= new bt_window(this);
+
+    b_window->show();
+
+}

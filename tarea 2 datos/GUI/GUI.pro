@@ -25,17 +25,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        bt_window.cpp \
         client.cpp \
         ll_window.cpp \
         main.cpp \
         mainwindow.cpp
 
 HEADERS += \
-    client.h \
+    bt_window.h \
+    client.h\
         ll_window.h \
         mainwindow.h \
 
 FORMS += \
+        bt_window.ui \
         ll_window.ui \
         mainwindow.ui
 

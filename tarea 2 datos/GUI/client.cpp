@@ -6,7 +6,7 @@
 #include<sys/socket.h>
 #include<netinet/in.h>
 #include<netdb.h>
-int main (int argc, char **argv){//int run_client(char* direccion_ip,char* numero_de_puerto,char* buffer){//main
+ int main (int argc, char **argv){//int run_client(char* direccion_ip,char* numero_de_puerto,char* buffer){//main
   /*if(argc<2)
   {
     printf("<host> <puerto>\n");
@@ -14,7 +14,7 @@ int main (int argc, char **argv){//int run_client(char* direccion_ip,char* numer
   }*/
   struct sockaddr_in cliente; //Declaración de la estructura con información para la conexión
   struct hostent *servidor; //Declaración de la estructura con información del host
-  servidor = gethostbyname("127.0.0.1");//servidor = gethostbyname(direccion_ip); //Asignacion///////////////////////////////////
+  servidor = gethostbyname("127.0.0.1"); //Asignacion///////////////////////////////////ervidor = gethostbyname("127.0.0.1");//
   if(servidor == NULL)
   { //Comprobación
     printf("Host erróneo\n");

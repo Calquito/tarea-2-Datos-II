@@ -1,41 +1,47 @@
 
 #include <iostream>
+//#include "ll_container.h"
+#include <iostream>
+#include <stdlib.h>
+
 using namespace std;
-struct Node { 
-   int data; 
-   struct Node *next; 
+struct Node {
+    int data; 
+    Node *next; 
 }; 
 struct Node* head = NULL;
- 
-void insert(int new_data,struct Node* head) { 
-   struct Node* new_node = (struct Node*) malloc(sizeof(struct Node)); 
-   new_node->data = new_data; 
-   new_node->next = head; 
-   head = new_node; 
-   display( head);
+
+void display() { 
+struct Node* ptr;
+ptr = head;
+while (ptr != NULL) { 
+    cout<< ptr->data <<" "; 
+    ptr = ptr->next;
 } 
-void display(struct Node* head) { 
-   struct Node* ptr;
-   ptr = head;
-   while (ptr != NULL) { 
-      cout<< ptr->data <<" "; 
-      ptr = ptr->next;
-   } 
 } 
+
+void insert(int new_data) {
+struct Node* new_node = (struct Node*) malloc(sizeof(struct Node)); 
+new_node->data = new_data; 
+new_node->next =  head; 
+head = new_node; 
+display();
+} 
+
 /*int main(){//int main() { 
-   insert(3);
-   insert(1);
-   insert(7);
-   insert(2);
-   insert(9);
-   cout<<"The linked list is: ";
-   display(); 
-   return 0; 
-} 
+insert(3);
+insert(1);
+insert(7);
+insert(2);
+insert(9);
+cout<<"The linked list is: ";
+display(); 
+return 0; 
+} */
 
 
-/*#include <iostream>
-#include <stdlib.h>
+
+//estas son las demas funciones, no implementadas :(
 using namespace std;
  
 struct nodo{
@@ -46,7 +52,7 @@ struct nodo{
 typedef struct nodo *Tlista;
  
 void insertarInicio(Tlista &lista, int valor)
-{
+{  
     Tlista q;
     q = new(struct nodo);
     q->nro = valor;

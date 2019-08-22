@@ -7,6 +7,7 @@
 #include<arpa/inet.h>
 #include<netinet/in.h>
 #include<netdb.h>
+#include"linkedlist.h"
 //int main (int argc, char **argv){//main
 int run_server(const char* numero_de_puerto){
   /*if(argc<2)
@@ -54,6 +55,7 @@ int run_server(const char* numero_de_puerto){
     else
     {
       printf("%s\n", buffer);
+      insert(atoi(buffer));
       bzero((char *)&buffer, sizeof(buffer));
       send(conexion_cliente, "Recibido\n", 13, 0);
     }
